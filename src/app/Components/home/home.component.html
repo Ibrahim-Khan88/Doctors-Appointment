@@ -1,1 +1,54 @@
-<p>home works!</p>
+<div class="container" fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center start">
+    <mat-card class="selection" fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="space-between space-between">
+
+        <mat-form-field fxFlex="50" appearance="outline">
+            <mat-label>Boarding Place</mat-label>
+            <mat-select>
+                <mat-option>None</mat-option>
+               
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-button class="button">
+            Create Appointment
+        </button>
+
+    </mat-card>
+    <!-- <div style="width: 100%; background-color: red; height: 100px;"> </div> -->
+    <mat-card class="calender-container">
+        <mat-grid-list cols="6" rowHeight="130px">
+            <mat-grid-tile>
+                <div class="appointment-list-container" fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="start start">
+                    <span class="date"> Jan 1</span>
+                    <div class="appointment-list">
+                        <div class="appointment"> &nbsp; Appointment 1 </div>
+                        <div class="appointment"> &nbsp;Appointment 2 </div>
+                        <div class="appointment"> &nbsp;Appointment 3 </div>
+                        <div class="appointment"> &nbsp;Appointment 4 </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>Tile 2 </mat-grid-tile>
+            <mat-grid-tile>Tile 3 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile>
+            <mat-grid-tile>Tile 1 </mat-grid-tile>
+            <mat-grid-tile>Tile 2 </mat-grid-tile>
+            <mat-grid-tile>Tile 3 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile>
+            <mat-grid-tile>Tile 1 </mat-grid-tile>
+            <mat-grid-tile>Tile 2 </mat-grid-tile>
+            <mat-grid-tile>Tile 3 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile>
+            <mat-grid-tile>Tile 1 </mat-grid-tile>
+            <mat-grid-tile>Tile 2 </mat-grid-tile>
+            <mat-grid-tile>Tile 3 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile>
+            <mat-grid-tile>Tile 1 </mat-grid-tile>
+            <mat-grid-tile>Tile 2 </mat-grid-tile>
+            <mat-grid-tile>Tile 3 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>
+</div>
