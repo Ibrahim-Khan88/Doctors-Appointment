@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatNativeDateModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatNativeDateModule, MatSnackBarModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -15,12 +15,25 @@ import {MatDividerModule} from '@angular/material/divider'
 import { AddAppointmentComponent } from './Components/Modal/add-appointment/add-appointment.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { ShowAppointmentInformationComponent } from './Components/Modal/show-appointment-information/show-appointment-information.component';
+import { LandingComponent } from './Components/landing/landing.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    component: LandingComponent
+  },
+  {
+    path: 'month/:id',
     component: HomeComponent
+  },
+  {
+    path: 'add',
+    component: AddAppointmentComponent
+  },
+  {
+    path: 'info',
+    component: ShowAppointmentInformationComponent
   },
   {
     path: '404',
@@ -38,7 +51,8 @@ const routes: Routes = [
     NotFoundComponent,
     HomeComponent,
     AddAppointmentComponent,
-    ShowAppointmentInformationComponent
+    ShowAppointmentInformationComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -59,11 +73,12 @@ const routes: Routes = [
     MatDialogModule,
     MatToolbarModule,
     MatNativeDateModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MatSnackBarModule
   ],
   exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddAppointmentComponent]
+  entryComponents: [AddAppointmentComponent, ShowAppointmentInformationComponent]
 })
 export class AppModule { }

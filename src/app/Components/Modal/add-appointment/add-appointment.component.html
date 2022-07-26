@@ -9,7 +9,7 @@
             </div>
         </mat-toolbar>
 
-        <div>
+        <div class="modal-content" fxLayout="column" fxLayoutGap="10px">
             <form fxLayout="column" [formGroup]="appointment">
                 <mat-form-field fxFlex="100" appearance="outline">
                     <mat-label>First Name</mat-label>
@@ -98,17 +98,21 @@
                     <ngx-material-timepicker #timePicker></ngx-material-timepicker>
                 </div>
             </form>
-        </div>
-        <mat-divider></mat-divider>
-        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between center">
-            <button mat-raised-button mat-dialog-close class="button">
-                Cancel
-            </button>
-            <div>
-                <button [disabled]="appointment.invalid" mat-raised-button (click)="addAppointment()" class="button">
-                    Confirm
+            <mat-divider></mat-divider>
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between center">
+                <button mat-raised-button mat-dialog-close class="button">
+                    Cancel
                 </button>
+                <div>
+                    <button [disabled]="appointment.invalid" mat-raised-button (click)="addAppointment()"
+                        class="button">
+                        Confirm
+                    </button>
+                </div>
             </div>
         </div>
+
+        {{appointment.value | json}}
+
     </div>
 </div>

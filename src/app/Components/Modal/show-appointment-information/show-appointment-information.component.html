@@ -3,81 +3,83 @@
         <mat-toolbar matDialogTitle class="dialog-toolbar" color="primary">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="dialog-toolbar-title">
-                    Add Appointment
+                    Appointment information
                 </div>
                 <mat-icon style="cursor: pointer" mat-dialog-close>close</mat-icon>
             </div>
         </mat-toolbar>
 
-        <div class="dialog-content" fxLayout="column" fxLayoutGap="15px">
+        <div class="modal-content" fxLayout="column" fxLayoutGap="10px">
+            <div class="dialog-content" fxLayout="column" fxLayoutGap="15px">
 
-            <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
-                <div fxFlex="45" class="heading">
-                    First Name
+                <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="45" class="heading">
+                        First Name
+                    </div>
+                    <div fxFlex="10" class="clone">
+                        :
+                    </div>
+                    <div fxFlex="45" class="info">
+                        {{appointmentInfo.firstName}}
+                    </div>
                 </div>
-                <div fxFlex="10" class="clone">
-                    :
+
+                <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="45" class="heading">
+                        First Name
+                    </div>
+                    <div fxFlex="10" class="clone">
+                        :
+                    </div>
+                    <div fxFlex="45" class="info">
+                        {{appointmentInfo.firstName}}
+                    </div>
                 </div>
-                <div fxFlex="45" class="info">
-                    {{appointmentInfo.firstName}}
+
+                <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="45" class="heading">
+                        First Name
+                    </div>
+                    <div fxFlex="10" class="clone">
+                        :
+                    </div>
+                    <div fxFlex="45" class="info">
+                        {{appointmentInfo.firstName}}
+                    </div>
                 </div>
+
+                <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="45" class="heading">
+                        First Name
+                    </div>
+                    <div fxFlex="10" class="clone">
+                        :
+                    </div>
+                    <div fxFlex="45" class="info">
+                        {{appointmentInfo.firstName}}
+                    </div>
+                </div>
+                <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxFlex="45" class="heading">
+                        First Name
+                    </div>
+                    <div fxFlex="10" class="clone">
+                        :
+                    </div>
+                    <div fxFlex="45" class="info">
+                        {{appointmentInfo.firstName}}
+                    </div>
+                </div>
+
+
             </div>
-
-            <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
-                <div fxFlex="45" class="heading">
-                    First Name
+            <mat-divider></mat-divider>
+            <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center">
+                <div>
+                    <button class="button" mat-button mat-dialog-close>
+                        close
+                    </button>
                 </div>
-                <div fxFlex="10" class="clone">
-                    :
-                </div>
-                <div fxFlex="45" class="info">
-                    {{appointmentInfo.firstName}}
-                </div>
-            </div>
-
-            <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
-                <div fxFlex="45" class="heading">
-                    First Name
-                </div>
-                <div fxFlex="10" class="clone">
-                    :
-                </div>
-                <div fxFlex="45" class="info">
-                    {{appointmentInfo.firstName}}
-                </div>
-            </div>
-
-            <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
-                <div fxFlex="45" class="heading">
-                    First Name
-                </div>
-                <div fxFlex="10" class="clone">
-                    :
-                </div>
-                <div fxFlex="45" class="info">
-                    {{appointmentInfo.firstName}}
-                </div>
-            </div>
-            <div class="last-name item" fxLayout="row" fxLayoutAlign="space-between center">
-                <div fxFlex="45" class="heading">
-                    First Name
-                </div>
-                <div fxFlex="10" class="clone">
-                    :
-                </div>
-                <div fxFlex="45" class="info">
-                    {{appointmentInfo.firstName}}
-                </div>
-            </div>
-        </div>
-
-
-        <mat-divider></mat-divider>
-        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center">
-            <div>
-                <button class="button" mat-button>
-                    Confirm
-                </button>
             </div>
         </div>
     </div>

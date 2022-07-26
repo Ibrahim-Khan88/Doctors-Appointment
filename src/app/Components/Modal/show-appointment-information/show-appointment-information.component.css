@@ -20,8 +20,7 @@
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    width: 100%;
 }
 
 .button {
@@ -32,9 +31,14 @@
     background-color: #ffd900;
 }
 
+.modal-content{
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
 .dialog-content {
     width: 100%;
-    padding: 12px;
+    padding: 20px;
 }
 
 .item {

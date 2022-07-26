@@ -2,39 +2,37 @@
     <mat-card class="selection" fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="space-between space-between">
 
         <mat-form-field fxFlex="50" appearance="outline">
-            <mat-label>Boarding Place</mat-label>
-            <mat-select>
-                <mat-option>None</mat-option>
-               
+            <mat-label>Select Month</mat-label>
+            <mat-select (selectionChange)="changedMonth($event.value)" [(value)]="selectedMonth.number">
+                <mat-option *ngFor="let month of monthInformation" [value]="month.number">
+                    {{month.fullName}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <button mat-button class="button">
+        <button mat-button class="button" (click)="openCreateAppiontmentModal()">
             Create Appointment
         </button>
 
     </mat-card>
-    <!-- <div style="width: 100%; background-color: red; height: 100px;"> </div> -->
+    <!-- <div style="width: 100%; background-color: red; height: 100px;"> </div>  (click)="openAppiontmentDetailModal('11')"> -->
     <mat-card class="calender-container">
         <mat-grid-list cols="6" rowHeight="130px">
-            <mat-grid-tile>
+            <mat-grid-tile *ngFor='let loop of numberReturn() ;let i= index'>
                 <div class="appointment-list-container" fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="start start">
-                    <span class="date"> Jan 1</span>
-                    <div class="appointment-list">
-                        <div class="appointment"> &nbsp; Appointment 1 </div>
-                        <div class="appointment"> &nbsp;Appointment 2 </div>
-                        <div class="appointment"> &nbsp;Appointment 3 </div>
-                        <div class="appointment"> &nbsp;Appointment 4 </div>
+                    <span class="date"> {{this.selectedMonth.shortName}} {{i+1}}</span>
+                    <div *ngIf="renderedData[i].length > 0;else emptyContent" class="appointment-list">
+                        <div *ngFor='let appointmentData of renderedData[i]; let j = index' class="appointment"
+                            (click)="openAppiontmentDetailModal(appointmentData.id)"> &nbsp; Appointment {{j+1}}
+                        </div>
                     </div>
+                    <ng-template #emptyContent>
+                        <div class="emptyContent">Empty</div>
+                    </ng-template>
                 </div>
             </mat-grid-tile>
-            <mat-grid-tile>Tile 2 </mat-grid-tile>
-            <mat-grid-tile>Tile 3 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile>
-            <mat-grid-tile>Tile 1 </mat-grid-tile>
-            <mat-grid-tile>Tile 2 </mat-grid-tile>
-            <mat-grid-tile>Tile 3 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile>
+
+            <!-- <mat-grid-tile>Tile 4 </mat-grid-tile>
             <mat-grid-tile>Tile 1 </mat-grid-tile>
             <mat-grid-tile>Tile 2 </mat-grid-tile>
             <mat-grid-tile>Tile 3 </mat-grid-tile>
@@ -43,12 +41,7 @@
             <mat-grid-tile>Tile 1 </mat-grid-tile>
             <mat-grid-tile>Tile 2 </mat-grid-tile>
             <mat-grid-tile>Tile 3 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile>
-            <mat-grid-tile>Tile 1 </mat-grid-tile>
-            <mat-grid-tile>Tile 2 </mat-grid-tile>
-            <mat-grid-tile>Tile 3 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile>
+            <mat-grid-tile>Tile 4 </mat-grid-tile> -->
         </mat-grid-list>
     </mat-card>
 </div>

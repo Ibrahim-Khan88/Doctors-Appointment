@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-add-appointment',
@@ -9,19 +10,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddAppointmentComponent implements OnInit {
 
   appointment : FormGroup;
-  constructor(private fb: FormBuilder) { }
   minDate = new Date();
   maxDate =  new Date(this.minDate.getFullYear(), 11, 31);
 
+  constructor(private fb: FormBuilder, 
+    private _dialogRef: MatDialogRef<AddAppointmentComponent>) { }
+
   ngOnInit() {
     this.appointment = this.fb.group({
-      'firstName' : ['', [Validators.required, Validators.maxLength(5)]],
-      'lastName' : ['', [Validators.required, Validators.maxLength(5)]],
-      'email' : ['', [Validators.email, Validators.required]],
+      'firstName' : ['ff', [Validators.required, Validators.maxLength(5)]],
+      'lastName' : ['ff', [Validators.required, Validators.maxLength(5)]],
+      'email' : ['ff@ff', [Validators.email, Validators.required]],
       'gender' : [''],
-      'age' : [''],
-      'date' : ['', [Validators.required]],
-      'time' : ['', [Validators.required]],
+      'age' : ['22'],
+      'date' : ['7/29/2022', [Validators.required]],
+      'time' : ['11:22', [Validators.required]],
     });
 
     this.appointment.get('firstName').valueChanges.subscribe(data => {
@@ -30,6 +33,6 @@ export class AddAppointmentComponent implements OnInit {
   }
 
   addAppointment(){
-
+    this._dialogRef.close({success: true});
   }
 }

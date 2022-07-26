@@ -1,3 +1,4 @@
+
 .dialog-toolbar {
     background: #ffd900 !important;
     color: rgba(0, 0, 0, 0.87);
@@ -7,6 +8,13 @@
     font-size: 20px;
     line-height: 23px;
     font-weight: 400;
+}
+
+.modal-content{
+    padding: 0 20px;
+    height: 500px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
 }
 
 .title {
@@ -20,7 +28,7 @@
 }
 
 .container {
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
