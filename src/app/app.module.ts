@@ -6,12 +6,15 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatInputModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatNativeDateModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider'
+import { AddAppointmentComponent } from './Components/Modal/add-appointment/add-appointment.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { ShowAppointmentInformationComponent } from './Components/Modal/show-appointment-information/show-appointment-information.component';
 
 const routes: Routes = [
   {
@@ -33,7 +36,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    AddAppointmentComponent,
+    ShowAppointmentInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +53,17 @@ const routes: Routes = [
     MatIconModule,
     MatSelectModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule
   ],
   exports: [RouterModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddAppointmentComponent]
 })
 export class AppModule { }

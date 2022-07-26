@@ -1,0 +1,114 @@
+<div class="container">
+    <div fxLayout="column" fxLayoutGap="15px">
+        <mat-toolbar matDialogTitle class="dialog-toolbar" color="primary">
+            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="dialog-toolbar-title">
+                    Add Appointment
+                </div>
+                <mat-icon style="cursor: pointer" mat-dialog-close>close</mat-icon>
+            </div>
+        </mat-toolbar>
+
+        <div>
+            <form fxLayout="column" [formGroup]="appointment">
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input formControlName="firstName" matInput type="text" required>
+                </mat-form-field>
+                <div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.firstName.invalid && appointment.controls.firstName.touched && appointment.controls.firstName.errors.required">
+                        First Name is required
+                    </div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.firstName.invalid && (appointment.controls.firstName.touched || appointment.controls.firstName.dirty) && appointment.controls.firstName.errors?.maxlength">
+                        First Name should be less than 40 character
+                    </div>
+                </div>
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input formControlName="lastName" matInput type="text" required>
+                </mat-form-field>
+                <div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.lastName.invalid && appointment.controls.lastName.touched && appointment.controls.lastName.errors.required">
+                        Last Name is required
+                    </div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.lastName.invalid && (appointment.controls.lastName.touched || appointment.controls.lastName.dirty) && appointment.controls.lastName.errors.maxlength">
+                        Last Name should be less than 40 character
+                    </div>
+                </div>
+
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput type="text" required>
+                </mat-form-field>
+                <div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.email.invalid && appointment.controls.email.touched && appointment.controls.email.errors.required">
+                        Email is required
+                    </div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.email.invalid && (appointment.controls.email.touched || appointment.controls.email.dirty) && appointment.controls.email.errors.email">
+                        Not a valid email
+                    </div>
+                </div>
+
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender">
+                        <mat-option value="Male">Male</mat-option>
+                        <mat-option value="Female">Female</mat-option>
+                        <mat-option value="Other">Other</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Age</mat-label>
+                    <input formControlName="age" matInput type="number">
+                </mat-form-field>
+
+                <div fxLayout="row" fxFlex="100" fxLayoutGap="10px" fxLayoutAlign="space-between center">
+                    <div fxFlex fxLayout="column">
+                        <mat-form-field fxFlex appearance="outline">
+                            <mat-label>Date</mat-label>
+                            <input [min]="minDate" [max]="maxDate" formControlName="date" matInput
+                                [matDatepicker]="picker" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <div class="error-message"
+                            *ngIf="appointment.controls.date.invalid && appointment.controls.date.touched && appointment.controls.date.errors.required">
+                            Date is required
+                        </div>
+                    </div>
+
+                    <div fxFlex fxLayout="column">
+                        <mat-form-field fxFlex appearance="outline">
+                            <mat-label>Time</mat-label>
+                            <input [ngxTimepicker]="timePicker" formControlName="time" matInput required>
+                            <mat-icon matSuffix class="my-icon" style="margin-right: 8px;">schedule</mat-icon>
+                        </mat-form-field>
+                        <div class="error-message"
+                            *ngIf="appointment.controls.time.invalid && appointment.controls.time.touched && appointment.controls.time.errors.required">
+                            Time is required
+                        </div>
+                    </div>
+                    <ngx-material-timepicker #timePicker></ngx-material-timepicker>
+                </div>
+            </form>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between center">
+            <button mat-raised-button mat-dialog-close class="button">
+                Cancel
+            </button>
+            <div>
+                <button [disabled]="appointment.invalid" mat-raised-button (click)="addAppointment()" class="button">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
