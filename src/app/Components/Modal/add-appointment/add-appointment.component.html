@@ -87,7 +87,7 @@
                     <div fxFlex fxLayout="column">
                         <mat-form-field fxFlex appearance="outline">
                             <mat-label>Time</mat-label>
-                            <input [ngxTimepicker]="timePicker" formControlName="time" matInput required>
+                            <input [ngxTimepicker]="timePicker" [format]=24 formControlName="time" matInput required>
                             <mat-icon matSuffix class="my-icon" style="margin-right: 8px;">schedule</mat-icon>
                         </mat-form-field>
                         <div class="error-message"
@@ -100,7 +100,7 @@
             </form>
             <mat-divider></mat-divider>
             <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between center">
-                <button mat-raised-button mat-dialog-close class="button">
+                <button mat-raised-button mat-dialog-close class="button" style="background-color: #e6e6e6;">
                     Cancel
                 </button>
                 <div>
@@ -111,8 +111,5 @@
                 </div>
             </div>
         </div>
-
-        {{appointment.value | json}}
-
     </div>
 </div>

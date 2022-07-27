@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-show-appointment-information',
@@ -7,15 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowAppointmentInformationComponent implements OnInit {
 
-  sdfs = 'dfd';
-  appointmentInfo;
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public appointmentInfo: any) { }
 
   ngOnInit() {
-    //this.appointmentInfo.firstname = 'Ibrahim'
-    this.appointmentInfo = {
-      firstName : 'ibrahim'
-    }
   }
 
 }

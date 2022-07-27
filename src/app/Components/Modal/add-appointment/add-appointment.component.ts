@@ -9,30 +9,36 @@ import { MatDialogRef } from '@angular/material';
 })
 export class AddAppointmentComponent implements OnInit {
 
-  appointment : FormGroup;
+  appointment: FormGroup;
   minDate = new Date();
-  maxDate =  new Date(this.minDate.getFullYear(), 11, 31);
+  maxDate = new Date(this.minDate.getFullYear(), 11, 31);
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private _dialogRef: MatDialogRef<AddAppointmentComponent>) { }
 
   ngOnInit() {
     this.appointment = this.fb.group({
-      'firstName' : ['ff', [Validators.required, Validators.maxLength(5)]],
-      'lastName' : ['ff', [Validators.required, Validators.maxLength(5)]],
-      'email' : ['ff@ff', [Validators.email, Validators.required]],
-      'gender' : [''],
-      'age' : ['22'],
-      'date' : ['7/29/2022', [Validators.required]],
-      'time' : ['11:22', [Validators.required]],
-    });
-
-    this.appointment.get('firstName').valueChanges.subscribe(data => {
-
+      'firstName': ['', [Validators.required, Validators.maxLength(40)]],
+      'lastName': ['', [Validators.required, Validators.maxLength(40)]],
+      'email': ['', [Validators.email, Validators.required]],
+      'gender': [''],
+      'age': [''],
+      'date': ['', [Validators.required]],
+      'time': ['', [Validators.required]],
     });
   }
 
-  addAppointment(){
-    this._dialogRef.close({success: true});
+  addAppointment() {
+    let data = this.appointment.getRawValue();
+    this.changeHourAndMinuteOfGivenTime(data);
+    this._dialogRef.close({ data: data });
+  }
+
+  changeHourAndMinuteOfGivenTime(data) {
+    let time1 = data.time.split(":");
+    let d = new Date(data.date);
+    d.setHours(time1[0]);
+    d.setMinutes(time1[1]);
+    data.date = d.toISOString();
   }
 }

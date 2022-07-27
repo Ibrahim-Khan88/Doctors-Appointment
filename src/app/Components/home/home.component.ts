@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     numberOfDay: 0
   };
   appointmentInfo: Appointment[];
-  monthInformation : any[];
+  monthInformation: any[];
   renderedData: any[] = [];
 
   constructor(private _dialog: MatDialog,
@@ -30,44 +30,39 @@ export class HomeComponent implements OnInit {
     private route: Router) { }
 
   ngOnInit() {
-    console.log("called");
     this.monthInformationInitialization();
-    this.selectedMonth = this.monthInformation.find(data => data.number === +this.activatedRoute.snapshot.params['id']);
-    console.log(JSON.stringify(this.selectedMonth));
-    this.appointmentInfo = this.appiontmentService.getData();
-    this.assignData();
-    //this.getAppiontmentData(27);
+    this.appointmentInfo = this.appiontmentService.loadTempData();
+    this.activatedRoute.params.subscribe(paramData => {
+      this.selectedMonth = this.monthInformation.find(data => data.number == paramData['id']);
+      this.assignData();
+    });
   }
 
-  assignData(){
-    for (var i=0; i<this.selectedMonth.numberOfDay; i++){
-     this.renderedData[i] = this.getAppiontmentData(i);
-    //this.renderedData[i] = 0;
-      console.log(i, this.renderedData[i].length);
+  assignData() {
+    var cloneData = this.appointmentInfo.slice();
+    for (var i = 0; i < this.selectedMonth.numberOfDay; i++) {
+      this.renderedData[i] = this.getAppiontmentData(i + 1, cloneData);
     }
   }
 
-  getAppiontmentData(day : number){
-    const temp = this.appointmentInfo.filter(data => {
+  getAppiontmentData(day: number, cloneData) {
+    const temp = cloneData.filter(data => {
       const d = new Date(data.date);
-      if (this.selectedMonth.number === (d.getMonth()+1) && day === d.getDate())
+      if (this.selectedMonth.number === (d.getMonth() + 1) && day === d.getDate())
         return true;
       else false;
     });
-   // console.log(temp.length, new Date(temp[0].date).getDate());
     temp.sort(function (a, b) {
       return new Date(a.date).getTime() - new Date(b.date).getTime();
     });
     return temp;
-   // console.log(this.appointmentInfo.length, this.appointmentInfo[0].id);
-   // console.log(temp.length, temp[0].id);
   }
 
-  changedMonth(monthNumber){
+  changedMonth(monthNumber) {
     this.route.navigate([`/month/${monthNumber}`]);
   }
 
-  monthInformationInitialization(){
+  monthInformationInitialization() {
     this.monthInformation = [
       {
         number: 1,
@@ -144,30 +139,28 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  numberReturn(){
+  numberReturn() {
     return new Array(this.selectedMonth.numberOfDay);
   }
 
   openCreateAppiontmentModal() {
     this._dialog.open(AddAppointmentComponent, {
       width: '600px'
-    }).afterClosed().subscribe(async ({ success }) => {
-      if (success) {
+    }).afterClosed().subscribe(({ data }) => {
+      if (data) {
+        this.appointmentInfo.push(data);
+        this.assignData();
         this.snackbar.open('Saved Successfully', '', {
           duration: 4000,
         });
       }
-      // else {
-      //   this.snackbar.open('Something Went Wrong!', '', {
-      //     duration: 4000,
-      //   });
-      // }
     });
   }
 
-  openAppiontmentDetailModal(id) {
+  openAppiontmentDetailModal(i, j) {
     this._dialog.open(ShowAppointmentInformationComponent, {
-      width: '600px'
+      width: '600px',
+      data: this.renderedData[i][j],
     });
   }
 

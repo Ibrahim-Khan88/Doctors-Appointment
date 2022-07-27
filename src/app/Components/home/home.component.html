@@ -3,7 +3,7 @@
 
         <mat-form-field fxFlex="50" appearance="outline">
             <mat-label>Select Month</mat-label>
-            <mat-select (selectionChange)="changedMonth($event.value)" [(value)]="selectedMonth.number">
+            <mat-select (selectionChange)="changedMonth($event.value)" [value]="selectedMonth.number">
                 <mat-option *ngFor="let month of monthInformation" [value]="month.number">
                     {{month.fullName}}
                 </mat-option>
@@ -15,6 +15,9 @@
         </button>
 
     </mat-card>
+    <mat-card class="month-name" fxLayout="column" fxLayoutAlign="center start">
+        <span>{{selectedMonth.fullName}}'s Appointment List</span>
+    </mat-card>
     <!-- <div style="width: 100%; background-color: red; height: 100px;"> </div>  (click)="openAppiontmentDetailModal('11')"> -->
     <mat-card class="calender-container">
         <mat-grid-list cols="6" rowHeight="130px">
@@ -23,7 +26,7 @@
                     <span class="date"> {{this.selectedMonth.shortName}} {{i+1}}</span>
                     <div *ngIf="renderedData[i].length > 0;else emptyContent" class="appointment-list">
                         <div *ngFor='let appointmentData of renderedData[i]; let j = index' class="appointment"
-                            (click)="openAppiontmentDetailModal(appointmentData.id)"> &nbsp; Appointment {{j+1}}
+                            (click)="openAppiontmentDetailModal(i,j)"> &nbsp; Appointment {{j+1}}
                         </div>
                     </div>
                     <ng-template #emptyContent>
@@ -31,17 +34,6 @@
                     </ng-template>
                 </div>
             </mat-grid-tile>
-
-            <!-- <mat-grid-tile>Tile 4 </mat-grid-tile>
-            <mat-grid-tile>Tile 1 </mat-grid-tile>
-            <mat-grid-tile>Tile 2 </mat-grid-tile>
-            <mat-grid-tile>Tile 3 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile>
-            <mat-grid-tile>Tile 1 </mat-grid-tile>
-            <mat-grid-tile>Tile 2 </mat-grid-tile>
-            <mat-grid-tile>Tile 3 </mat-grid-tile>
-            <mat-grid-tile>Tile 4 </mat-grid-tile> -->
         </mat-grid-list>
     </mat-card>
 </div>

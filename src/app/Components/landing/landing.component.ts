@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -11,7 +11,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     const date = new Date();
-    this.route.navigate([`/month/${(date.getMonth()+1)}`])
+    this.route.navigate([`/month/${(date.getMonth() + 1)}`])
   }
 
 }
