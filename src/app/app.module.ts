@@ -28,14 +28,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'add',
-    component: AddAppointmentComponent
-  },
-  {
-    path: 'info',
-    component: ShowAppointmentInformationComponent
-  },
-  {
     path: '404',
     component: NotFoundComponent
   },
