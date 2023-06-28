@@ -42,7 +42,7 @@
 
                 <mat-form-field fxFlex="100" appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input formControlName="email" matInput type="text" required>
+                    <input formControlName="email" matInput type="text">
                 </mat-form-field>
                 <div>
                     <div class="error-message"
@@ -52,6 +52,28 @@
                     <div class="error-message"
                         *ngIf="appointment.controls.email.invalid && (appointment.controls.email.touched || appointment.controls.email.dirty) && appointment.controls.email.errors.email">
                         Not a valid email
+                    </div>
+                </div>
+
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input formControlName="mobile" matInput type="number" required>
+                </mat-form-field>
+                <div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.mobile.invalid && appointment.controls.mobile.touched && appointment.controls.mobile.errors.required">
+                        Mobile is required
+                    </div>
+                </div>
+
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input formControlName="address" matInput type="text">
+                </mat-form-field>
+                <div>
+                    <div class="error-message"
+                        *ngIf="appointment.controls.address.invalid && appointment.controls.address.touched && appointment.controls.address.errors.required">
+                        Address is required
                     </div>
                 </div>
 

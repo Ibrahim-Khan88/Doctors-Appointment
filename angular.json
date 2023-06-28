@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SeliseAssessment": {
+    "Doctors-Appointment": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/SeliseAssessment",
+            "outputPath": "dist/Doctors-Appointment",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SeliseAssessment:build"
+            "browserTarget": "Doctors-Appointment:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SeliseAssessment:build:production"
+              "browserTarget": "Doctors-Appointment:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SeliseAssessment:build"
+            "browserTarget": "Doctors-Appointment:build"
           }
         },
         "test": {
@@ -118,18 +118,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SeliseAssessment:serve"
+            "devServerTarget": "Doctors-Appointment:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SeliseAssessment:serve:production"
+              "devServerTarget": "Doctors-Appointment:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "SeliseAssessment",
+  "defaultProject": "Doctors-Appointment",
   "cli": {
     "analytics": "4330d59f-1f7e-490c-b041-8b3e2fd83b37"
   }

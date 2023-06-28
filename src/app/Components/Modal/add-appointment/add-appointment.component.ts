@@ -20,8 +20,10 @@ export class AddAppointmentComponent implements OnInit {
     this.appointment = this.fb.group({
       'firstName': ['', [Validators.required, Validators.maxLength(40)]],
       'lastName': ['', [Validators.required, Validators.maxLength(40)]],
-      'email': ['', [Validators.email, Validators.required]],
+      'email': ['', [Validators.email]],
       'gender': [''],
+      'mobile': ['', [Validators.required]],
+      'address': [''],
       'age': [''],
       'date': ['', [Validators.required]],
       'time': ['', [Validators.required]],
