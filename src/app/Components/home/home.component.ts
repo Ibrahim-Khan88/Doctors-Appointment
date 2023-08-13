@@ -6,6 +6,7 @@ import { Appointment } from 'src/app/Model/Appiontment';
 import { AppiontmentService } from 'src/app/Service/appiontment.service';
 import { AddAppointmentComponent } from '../Modal/add-appointment/add-appointment.component';
 import { ShowAppointmentInformationComponent } from '../Modal/show-appointment-information/show-appointment-information.component';
+import { MonthInformation } from 'src/app/Constant/Constant';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
     numberOfDay: 0
   };
   appointmentInfo: Appointment[];
-  monthInformation: any[];
+  monthInformation = MonthInformation;
   renderedData: any[] = [];
 
   constructor(private _dialog: MatDialog,
@@ -31,7 +32,6 @@ export class HomeComponent implements OnInit {
     private route: Router) { }
 
   ngOnInit() {
-    this.monthInformationInitialization();
     this.appointmentInfo = this.appiontmentService.loadTempData();
     this.activatedRoute.params.subscribe(paramData => {
       this.selectedMonth = this.monthInformation.find(data => data.number == paramData['id']);
@@ -61,83 +61,6 @@ export class HomeComponent implements OnInit {
 
   changedMonth(monthNumber) {
     this.route.navigate([`/month/${monthNumber}`]);
-  }
-
-  monthInformationInitialization() {
-    this.monthInformation = [
-      {
-        number: 1,
-        fullName: "January",
-        shortName: "Jan",
-        numberOfDay: 31
-      },
-      {
-        number: 2,
-        fullName: "February",
-        shortName: "Feb",
-        numberOfDay: 28
-      },
-      {
-        number: 3,
-        fullName: "March",
-        shortName: "Mar",
-        numberOfDay: 31
-      },
-      {
-        number: 4,
-        fullName: "April",
-        shortName: "Apr",
-        numberOfDay: 30
-      },
-      {
-        number: 5,
-        fullName: "May",
-        shortName: "May",
-        numberOfDay: 31
-      },
-      {
-        number: 6,
-        fullName: "June",
-        shortName: "Jun",
-        numberOfDay: 30
-      },
-      {
-        number: 7,
-        fullName: "July",
-        shortName: "Jul",
-        numberOfDay: 31
-      },
-      {
-        number: 8,
-        fullName: "August",
-        shortName: "Aug",
-        numberOfDay: 31
-      },
-      {
-        number: 9,
-        fullName: "September",
-        shortName: "Sep",
-        numberOfDay: 30
-      },
-      {
-        number: 10,
-        fullName: "October",
-        shortName: "Oct",
-        numberOfDay: 31
-      },
-      {
-        number: 11,
-        fullName: "November",
-        shortName: "Nov",
-        numberOfDay: 30
-      },
-      {
-        number: 12,
-        fullName: "December",
-        shortName: "Dec",
-        numberOfDay: 31
-      }
-    ];
   }
 
   numberReturn() {
