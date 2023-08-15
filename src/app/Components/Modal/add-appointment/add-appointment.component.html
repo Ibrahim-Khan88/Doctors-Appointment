@@ -57,7 +57,7 @@
 
                 <mat-form-field fxFlex="100" appearance="outline">
                     <mat-label>Mobile</mat-label>
-                    <input formControlName="mobile" matInput type="number" required>
+                    <input formControlName="mobile" matInput type="text" required>
                 </mat-form-field>
                 <div>
                     <div class="error-message"
@@ -126,7 +126,7 @@
                     Cancel
                 </button>
                 <div>
-                    <button [disabled]="appointment.invalid" mat-raised-button (click)="addAppointment()"
+                    <button [disabled]="appointment.invalid" mat-raised-button (click)="submit()"
                         class="button">
                         Confirm
                     </button>

@@ -26,6 +26,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HttpClientModule } from '@angular/common/http';
+import { AppiontmentService } from './Service/appiontment.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 const routes: Routes = [
@@ -77,10 +80,12 @@ const routes: Routes = [
     MatToolbarModule,
     MatNativeDateModule,
     NgxMaterialTimepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [AppiontmentService],
   bootstrap: [AppComponent],
   entryComponents: [AddAppointmentComponent, ShowAppointmentInformationComponent]
 })

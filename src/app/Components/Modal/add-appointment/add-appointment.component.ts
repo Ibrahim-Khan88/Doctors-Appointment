@@ -30,17 +30,17 @@ export class AddAppointmentComponent implements OnInit {
     });
   }
 
-  addAppointment() {
+  submit() {
     let data = this.appointment.getRawValue();
     this.changeHourAndMinuteOfGivenTime(data);
     this._dialogRef.close({ data: data });
   }
 
   changeHourAndMinuteOfGivenTime(data) {
-    let time1 = data.time.split(":");
+    let timeWithHourAndMinute = data.time.split(":");
     let d = new Date(data.date);
-    d.setHours(time1[0]);
-    d.setMinutes(time1[1]);
+    d.setHours(timeWithHourAndMinute[0]);
+    d.setMinutes(timeWithHourAndMinute[1]);
     data.date = d.toISOString();
   }
 }
